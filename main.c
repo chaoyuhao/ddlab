@@ -1,5 +1,5 @@
 #include "sys.h"
-extern const char hello[]="Hello World!\n";
+const char hello[]="Hello World!\n";
 
 
 int main();
