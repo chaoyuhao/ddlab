@@ -13,7 +13,7 @@ char comclear[]="clear";
 char comfib[]="fib";
 
 //programs:
-inline void swap(int *a, int *b);
+void swap(int *a, int *b);
 void bubble_sort(int arr[], int len);
 
 void vga_init(){
