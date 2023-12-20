@@ -13,7 +13,8 @@ char comclear[]="clear";
 char comfib[]="fib";
 
 //programs:
-void bubble_sort(int *a, int len);
+inline void swap(int *a, int *b);
+void bubble_sort(int arr[], int len);
 
 void vga_init(){
     vga_line=0;
@@ -754,18 +755,19 @@ long long int _long_modsi3(long long int a,int b)
     return a;
 }
 
-inline void swap(int *x, int *y){
-  int tmp = *x;
-  *x = *y;
-  *y = tmp;
+inline void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
-void bubble_sort(int *a, int len){
-  for(int i=0;i<len;i++){
-    for(int j=i+1;j<len;j++){
-      if(a[i]>a[j]) {
-        swap(&a[i], &a[j]);
-      }
+void bubble_sort(int arr[], int len) {
+    for (int i = 0; i < len - 1; i++) {
+        for (int j = 0; j < len - i - 1; j++) {
+            // 如果当前元素大于下一个元素，则交换它们
+            if (arr[j] > arr[j + 1]) {
+                swap(&arr[j], &arr[j + 1]);
+            }
+        }
     }
-  }
 }
