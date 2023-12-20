@@ -12,11 +12,8 @@ char comhello[]="hello";
 char comclear[]="clear";
 char comfib[]="fib";
 
-//hello 
-
-
-
-
+//programs:
+void bubble_sort(int *a, int len);
 
 void vga_init(){
     vga_line=0;
@@ -160,7 +157,7 @@ void deal_com(char * com )
 //
     if(strcmp(comhello,com)==0)
     {
-        putstr(hellofun);return;
+        putstr(hellofun); return;
     }
     if(strcmp(comclear,com)==0)
     {
@@ -755,4 +752,20 @@ long long int _long_modsi3(long long int a,int b)
         b >>= 1;
     }
     return a;
+}
+
+inline void swap(int *x, int *y){
+  int tmp = *x;
+  *x = *y;
+  *y = tmp;
+}
+
+void bubble_sort(int *a, int len){
+  for(int i=0;i<len;i++){
+    for(int j=i+1;j<len;j++){
+      if(a[i]>a[j]) {
+        swap(&a[i], &a[j]);
+      }
+    }
+  }
 }
