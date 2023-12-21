@@ -19,22 +19,22 @@ Disassembly of section .text:
       2c:	00008067          	ret
 
 00000030 <main>:
-      30:	fe010113          	addi	sp,sp,-32
-      34:	00112e23          	sw	ra,28(sp)
-      38:	00812c23          	sw	s0,24(sp)
-      3c:	02010413          	addi	s0,sp,32
+      30:	ff010113          	addi	sp,sp,-16
+      34:	00112623          	sw	ra,12(sp)
+      38:	00812423          	sw	s0,8(sp)
+      3c:	01010413          	addi	s0,sp,16
       40:	030000ef          	jal	ra,70 <vga_init>
-      44:	00100517          	auipc	a0,0x100
-      48:	fbc50513          	addi	a0,a0,-68 # 100000 <hello>
-      4c:	5f0000ef          	jal	ra,63c <putstr>
-      50:	12c000ef          	jal	ra,17c <vga_line_add>
-      54:	648000ef          	jal	ra,69c <getch>
-      58:	00050793          	mv	a5,a0
-      5c:	fef407a3          	sb	a5,-17(s0)
-      60:	fef44783          	lbu	a5,-17(s0)
-      64:	00078513          	mv	a0,a5
-      68:	788000ef          	jal	ra,7f0 <putcom>
-      6c:	fe9ff06f          	j	54 <main+0x24>
+      44:	138000ef          	jal	ra,17c <vga_line_add>
+      48:	00100517          	auipc	a0,0x100
+      4c:	fb850513          	addi	a0,a0,-72 # 100000 <hello>
+      50:	5ec000ef          	jal	ra,63c <putstr>
+      54:	128000ef          	jal	ra,17c <vga_line_add>
+      58:	00000793          	li	a5,0
+      5c:	00078513          	mv	a0,a5
+      60:	00c12083          	lw	ra,12(sp)
+      64:	00812403          	lw	s0,8(sp)
+      68:	01010113          	addi	sp,sp,16
+      6c:	00008067          	ret
 
 00000070 <vga_init>:
       70:	fe010113          	addi	sp,sp,-32

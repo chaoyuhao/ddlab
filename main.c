@@ -12,12 +12,13 @@ void entry()
 int main()
 {
     vga_init();
+    vga_line_add();
     putstr(hello);
     vga_line_add();
-    while(1)
-    {
-        char ch=getch();
-        putcom(ch);
-    };
+    // while(1)
+    // {
+    //     char ch=getch();
+    //     putcom(ch);
+    // };
     return 0;
 }

@@ -1,6 +1,6 @@
 #include "sys.h"
 
-char*vga_start=(char*)VGA_START;
+char*vga_start= (char *)VGA_START;
 int vga_line=0;
 int vga_ch=0;
 char head=0;
@@ -164,7 +164,10 @@ void deal_com(char * com )
     {
         vga_init();return;
     }
-    /*int flag[14]={0};  //0： hello 1：time 2:fib  3:wrong 4:color 5:cal 6:help 7:clear 8:led 9:g2048 10:snake 11:chess 12:russia 13:mazz
+    
+    /*
+
+    int flag[14]={0};  //0： hello 1：time 2:fib  3:wrong 4:color 5:cal 6:help 7:clear 8:led 9:g2048 10:snake 11:chess 12:russia 13:mazz
 
     if(cnt<=4)
     {
@@ -575,6 +578,9 @@ void deal_com(char * com )
         putstr(un);
       }
     }
+
+    */
+    
 //0： hello 1：time 2:fib  3:wrong 4:color 5:cal 6:help 7:clear 8:led 9:segn m
 
     // if(com == "hello")
@@ -607,7 +613,7 @@ void deal_com(char * com )
     // {
     //   char un[]="Unknown command!\n";
     //   putstr(un);
-    // }*/
+    // }
     return;
 }
 
