@@ -11,15 +11,6 @@ void entry()
 }
 int main()
 {
-    WelcomePage();
-    vga_init();
     putstr(hello);
-    vga_line_add();
-    //test_program();
-    while(1)
-    {
-        char ch=getch();
-        putcom(ch);
-    };
     return 0;
 }

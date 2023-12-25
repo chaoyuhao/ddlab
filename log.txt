@@ -1,0 +1,2 @@
+riscv32-unknown-elf-gcc -c -static -mcmodel=medany -fvisibility=hidden -Tsections.ld -nostdlib -nolibc -nostartfiles -Wall -Wextra -Wconversion -pedantic -Wcast-qual -Wcast-align -Wwrite-strings  sys.c -o sys.o
+Makefile:18: recipe for target 'sys.o' failed

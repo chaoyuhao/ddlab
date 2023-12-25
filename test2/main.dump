@@ -1,0 +1,99 @@
+
+main.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <entry>:
+   0:	ff010113          	addi	sp,sp,-16
+   4:	00112623          	sw	ra,12(sp)
+   8:	00812423          	sw	s0,8(sp)
+   c:	01010413          	addi	s0,sp,16
+  10:	00120137          	lui	sp,0x120
+  14:	ffc10113          	addi	sp,sp,-4 # 11fffc <_end+0x1f7fc>
+  18:	018000ef          	jal	ra,30 <main>
+  1c:	00000013          	nop
+  20:	00c12083          	lw	ra,12(sp)
+  24:	00812403          	lw	s0,8(sp)
+  28:	01010113          	addi	sp,sp,16
+  2c:	00008067          	ret
+
+00000030 <main>:
+  30:	ff010113          	addi	sp,sp,-16
+  34:	00112623          	sw	ra,12(sp)
+  38:	00812423          	sw	s0,8(sp)
+  3c:	01010413          	addi	s0,sp,16
+  40:	00100517          	auipc	a0,0x100
+  44:	fc050513          	addi	a0,a0,-64 # 100000 <hello>
+  48:	088000ef          	jal	ra,d0 <putstr>
+  4c:	00000793          	li	a5,0
+  50:	00078513          	mv	a0,a5
+  54:	00c12083          	lw	ra,12(sp)
+  58:	00812403          	lw	s0,8(sp)
+  5c:	01010113          	addi	sp,sp,16
+  60:	00008067          	ret
+
+00000064 <putch>:
+  64:	fe010113          	addi	sp,sp,-32
+  68:	00812e23          	sw	s0,28(sp)
+  6c:	02010413          	addi	s0,sp,32
+  70:	00050793          	mv	a5,a0
+  74:	fef407a3          	sb	a5,-17(s0)
+  78:	00100797          	auipc	a5,0x100
+  7c:	f9878793          	addi	a5,a5,-104 # 100010 <vga_start>
+  80:	0007a683          	lw	a3,0(a5)
+  84:	00100797          	auipc	a5,0x100
+  88:	f9078793          	addi	a5,a5,-112 # 100014 <vga_line>
+  8c:	0007a703          	lw	a4,0(a5)
+  90:	00070793          	mv	a5,a4
+  94:	00279793          	slli	a5,a5,0x2
+  98:	00e787b3          	add	a5,a5,a4
+  9c:	00479793          	slli	a5,a5,0x4
+  a0:	00078713          	mv	a4,a5
+  a4:	00100797          	auipc	a5,0x100
+  a8:	f7478793          	addi	a5,a5,-140 # 100018 <vga_ch>
+  ac:	0007a783          	lw	a5,0(a5)
+  b0:	00f707b3          	add	a5,a4,a5
+  b4:	00f687b3          	add	a5,a3,a5
+  b8:	fef44703          	lbu	a4,-17(s0)
+  bc:	00e78023          	sb	a4,0(a5)
+  c0:	00000013          	nop
+  c4:	01c12403          	lw	s0,28(sp)
+  c8:	02010113          	addi	sp,sp,32
+  cc:	00008067          	ret
+
+000000d0 <putstr>:
+  d0:	fd010113          	addi	sp,sp,-48
+  d4:	02112623          	sw	ra,44(sp)
+  d8:	02812423          	sw	s0,40(sp)
+  dc:	03010413          	addi	s0,sp,48
+  e0:	fca42e23          	sw	a0,-36(s0)
+  e4:	fdc42783          	lw	a5,-36(s0)
+  e8:	fef42623          	sw	a5,-20(s0)
+  ec:	0200006f          	j	10c <putstr+0x3c>
+  f0:	fec42783          	lw	a5,-20(s0)
+  f4:	0007c783          	lbu	a5,0(a5)
+  f8:	00078513          	mv	a0,a5
+  fc:	f69ff0ef          	jal	ra,64 <putch>
+ 100:	fec42783          	lw	a5,-20(s0)
+ 104:	00178793          	addi	a5,a5,1
+ 108:	fef42623          	sw	a5,-20(s0)
+ 10c:	fec42783          	lw	a5,-20(s0)
+ 110:	0007c783          	lbu	a5,0(a5)
+ 114:	fc079ee3          	bnez	a5,f0 <putstr+0x20>
+ 118:	00000013          	nop
+ 11c:	00000013          	nop
+ 120:	02c12083          	lw	ra,44(sp)
+ 124:	02812403          	lw	s0,40(sp)
+ 128:	03010113          	addi	sp,sp,48
+ 12c:	00008067          	ret
+
+Disassembly of section .data:
+
+00100000 <hello>:
+  100000:	6548                	flw	fa0,12(a0)
+  100002:	6c6c                	flw	fa1,92(s0)
+  100004:	6f57206f          	j	172ef8 <_end+0x726f8>
+  100008:	6c72                	flw	fs8,28(sp)
+  10000a:	2164                	fld	fs1,192(a0)
+  10000c:	000a                	c.slli	zero,0x2

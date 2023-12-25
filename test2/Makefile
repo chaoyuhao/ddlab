@@ -10,13 +10,12 @@ RISCV_OBJCOPY ?= $(RISCV_PREFIX)objcopy -O verilog
 RISCV_HEXGEN ?= 'BEGIN{output=0;}{ gsub("\r","",$$(NF)); if ($$1 ~/@/) {if ($$1 ~/@00000000/) {output=code;} else {output=1- code;}; gsub("@","0x",$$1); addr=strtonum($$1); if (output==1) {printf "@%08x\n",(addr%262144)/4;}} else {if (output==1) { for(i=1;i<NF;i+=4) print $$(i+3)$$(i+2)$$(i+1)$$i;}}}'
 RISCV_MIFGEN ?= 'BEGIN{printf "WIDTH=32;\nDEPTH=%d;\n\nADDRESS_RADIX=HEX;\nDATA_RADIX=HEX;\n\nCONTENT BEGIN\n",depth ; addr=0;} { gsub("\r","",$$(NF)); if ($$1 ~/@/) { sub("@","0x",$$1);addr=strtonum($$1);} else {printf "%04X : %s;\n", addr, $$1; addr=addr+1;}} END{print "END\n";}'
 
-CFLAGS := -w
 SRCS := $(wildcard  *.c)
 OBJS := $(SRCS:.c=.o)
 EXEC := main
 
 .c.o:
-	$(RISCV_GCC) $(CFLAGS) -c $(RISCV_GCC_OPTS)  $< -o $@
+	$(RISCV_GCC) -c $(RISCV_GCC_OPTS)  $< -o $@
 
 ${EXEC}.elf : $(OBJS)
 	${RISCV_GCC}  ${RISCV_GCC_OPTS} -e entry $(OBJS) -o $@
